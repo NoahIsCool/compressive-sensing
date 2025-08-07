@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <torch/torch.h>
-#include "../include/library.h"
+#include "../include/omp.h"
 
 // Test the hello function with CPU device
 TEST(LibraryTest, HelloFunctionCPU) {

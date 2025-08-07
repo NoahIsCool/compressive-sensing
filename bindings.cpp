@@ -1,6 +1,6 @@
 // bindings.cpp
 #include <pybind11/pybind11.h>
-#include "include/library.h"
+#include "include/omp.h"
 
 namespace py = pybind11;
 

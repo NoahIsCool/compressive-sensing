@@ -1,6 +1,4 @@
-#ifndef COMPRESSIVE_SENSING_LIBRARY_H
-#define COMPRESSIVE_SENSING_LIBRARY_H
-
+#pragma once
 #include <torch/torch.h>
 
 // Simple hello function for testing
@@ -23,5 +21,3 @@ void hello(const torch::Device& device = torch::kCPU);
 // Example function declarations to be implemented:
 // torch::Tensor compress(const torch::Tensor& signal, const torch::Tensor& sensing_matrix);
 // torch::Tensor reconstruct(const torch::Tensor& measurements, const torch::Tensor& sensing_matrix);
-
-#endif //COMPRESSIVE_SENSING_LIBRARY_H
