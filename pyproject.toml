@@ -1,0 +1,18 @@
+[tool.scikit-build]
+wheel.expand-macos-universal-tags = true
+cmake.minimum-version = "3.31"
+
+[tool.scikit-build.editable]
+mode            = "inplace"   # build directly into the source tree
+build-on-install = true       # run CMake during `pip install -e .`
+# NEW ↓↓↓ -----------------------------------------------------------
+# Packages that belong to the wheel
+packages = ["compressive_sensing"]
+
+# Map the Python “root” package ("") to the src directory
+package-dir = { "" = "src" }
+
+# <-- add this -->
+[tool.scikit-build.cmake.define]
+Python_EXECUTABLE = "{sys.executable}"
+Torch_DIR         = "{import:torch; Path(torch.__file__).parent/'share'/'cmake'/'Torch'}"

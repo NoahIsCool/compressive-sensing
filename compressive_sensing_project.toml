@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "pybind11", "torch"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "compressive_sensing"
+version = "0.1.0"
+description = "C++/PyTorch Compressive Sensing demo with Python bindings"
+authors = [{ name = "YOUR NAME", email = "you@example.com" }]
+requires-python = ">=3.9"

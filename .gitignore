@@ -1,0 +1,61 @@
+build/*
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C++ build artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Distribution / packaging
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Python cache
+.pytest_cache/
+.coverage
+htmlcov/
+# Build artifacts
+build/
+dist/
+_skbuild/
+*.so
+*.pyd
+*.dll
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+.DS_Store
