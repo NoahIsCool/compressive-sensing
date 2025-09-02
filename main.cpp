@@ -1,25 +1,20 @@
 
 #include "include/omp.h"
 #include <iostream>
+#include <torch/torch.h>
 
 int main() {
-    // Try with CPU (always available)
-    std::cout << "\n--- Testing with CPU ---\n" << std::endl;
-    const auto dev = get_device();
+    
+    auto X = torch::tensor({
+                {0, 0},
+                {1, 2},
+                {3, 4},
+            {5, 6}
+        }, torch::kFloat).transpose(0, 1);
 
-    hello();
-
-
-
-    // Try with MPS if available (for Apple Silicon)
-    #ifdef USE_MPS
-    if (torch::mps::is_available()) {
-        std::cout << "\n--- Testing with MPS ---\n" << std::endl;
-        hello("mps");
-    } else {
-        std::cout << "\n--- MPS not available ---\n" << std::endl;
-    }
-    #endif
-
+    std::cout << X << std::endl;
+    std::cout << omp::mutual_coherence(X) << std::endl;
     return 0;
+
+
 }

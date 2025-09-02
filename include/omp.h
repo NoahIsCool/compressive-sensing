@@ -3,21 +3,21 @@
 
 // Simple hello function for testing
 
-// RVO means that this won't really get coppied
-inline torch::Device get_device() {
-    // Try with CUDA if available
-    if (torch::cuda::is_available()) {
-        return torch::Device("cuda");
-    } else if (torch::mps::is_available()){
-        return torch::Device("mps");
-    } else {
-        return torch::Device("cpu");
-    }
-}
-// device can be: "cpu", "cuda", "mps", etc.
-void hello(const torch::Device& device = torch::kCPU);
+// RVO means that this won't really get copied
 
-// Placeholder for future compressive sensing functionality
-// Example function declarations to be implemented:
-// torch::Tensor compress(const torch::Tensor& signal, const torch::Tensor& sensing_matrix);
-// torch::Tensor reconstruct(const torch::Tensor& measurements, const torch::Tensor& sensing_matrix);
+namespace omp {
+    float mutual_coherence(const torch::Tensor& X);
+    float welch_bound(const torch::Tensor& X);
+    float rip(torch::Tensor A, float s, float epsilon=1e-12);
+
+    inline torch::Device get_device() {
+        if (torch::cuda::is_available()) {
+            return {"cuda"};
+        }
+        if (torch::mps::is_available()) {
+            return {"mps"};
+        }
+        return {"cpu"};
+    }
+
+}
