@@ -88,3 +88,17 @@ add_executable(compressive_sensing_test tests/test_omp.cpp)
 target_link_libraries(compressive_sensing_test PRIVATE compressive_sensing GTest::gtest_main GTest::gmock ${TORCH_LIBRARIES})
 include(GoogleTest)
 gtest_discover_tests(compressive_sensing_test)
+
+# ---------- Bash script test (runs via CTest) ----------
+
+if(NOT EXISTS "${BASH_TEST_SCRIPT}")
+    # You can override BASH_TEST_SCRIPT on the CMake command line:
+    #   -DBASH_TEST_SCRIPT=/full/path/to/your_script.sh
+    set(BASH_TEST_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/tests/run_python_tests.sh" CACHE FILEPATH "Path to bash test script to run with CTest")
+endif()
+# Use bash explicitly so the script doesn't need the +x bit set
+add_test(
+        NAME bash_script_tests
+        COMMAND /usr/bin/env bash "${BASH_TEST_SCRIPT}"
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+)
