@@ -1,5 +1,5 @@
 
-#include "include/omp.h"
+#include "include/compressive_sensing.h"
 #include <iostream>
 #include <torch/torch.h>
 
@@ -13,7 +13,7 @@ int main() {
         }, torch::kFloat).transpose(0, 1);
 
     std::cout << X << std::endl;
-    std::cout << omp::mutual_coherence(X) << std::endl;
+    std::cout << compressive_sensing::mutual_coherence(X) << std::endl;
     return 0;
 
 

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <torch/torch.h>
-#include "../include/omp.h"
+#include "../include/compressive_sensing.h"
 
 // Test the hello function with CPU device
 TEST(LibraryTest, mu) {
@@ -13,5 +13,5 @@ TEST(LibraryTest, mu) {
         {5, 6}
                            }, torch::kFloat).transpose(0, 1);
     std::cout << X << std::endl;
-    omp::mutual_coherence(X);
+    compressive_sensing::mutual_coherence(X);
 }

@@ -1,14 +1,14 @@
 // bindings.cpp
 #include <pybind11/pybind11.h>
-#include "include/omp.h"
+#include "include/compressive_sensing.h"
 
 namespace py = pybind11;
  // bindings.cpp
  #include <pybind11/pybind11.h>
 #include <torch/extension.h>
- #include "include/omp.h"
+ #include "include/compressive_sensing.h"
  
- namespace py = pybind11;
+namespace py = pybind11;
  
  PYBIND11_MODULE(_compressive_sensing, m)
  {
@@ -17,7 +17,7 @@ namespace py = pybind11;
      m.def(
          "get_device",
          []() {
-             return omp::get_device().str();
+             return compressive_sensing::get_device().str();
          },
          R"pbdoc(
              Return the best available device as a string: "cuda", "mps", or "cpu".
@@ -26,7 +26,7 @@ namespace py = pybind11;
         // inline torch::Device get_device() {
     m.def(
         "mutual_coherence",
-        &omp::mutual_coherence,
+        &compressive_sensing::mutual_coherence,
         py::arg("X"),
         R"pbdoc(
             Compute the mutual coherence of the column-normalized dictionary X.
@@ -41,7 +41,7 @@ namespace py = pybind11;
 
     m.def(
         "welch_bound",
-        &omp::welch_bound,
+        &compressive_sensing::welch_bound,
         py::arg("X"),
         R"pbdoc(
             Compute the Welch bound for matrix X.

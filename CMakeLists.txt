@@ -62,7 +62,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 # ---------- Core static library ----------
-add_library(compressive_sensing STATIC lib/omp.cpp)
+add_library(compressive_sensing STATIC lib/compressive_sensing.cpp)
 target_link_libraries(compressive_sensing PRIVATE ${TORCH_LIBRARIES})
 target_include_directories(compressive_sensing PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -84,7 +84,7 @@ add_executable(main main.cpp)
 target_link_libraries(main PRIVATE compressive_sensing ${TORCH_LIBRARIES})
 
 # ---------- C++ tests ----------
-add_executable(compressive_sensing_test tests/test_omp.cpp)
+add_executable(compressive_sensing_test tests/test_compressive_sensing.cpp)
 target_link_libraries(compressive_sensing_test PRIVATE compressive_sensing GTest::gtest_main GTest::gmock ${TORCH_LIBRARIES})
 include(GoogleTest)
 gtest_discover_tests(compressive_sensing_test)
